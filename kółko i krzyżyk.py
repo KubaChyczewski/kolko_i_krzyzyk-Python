@@ -14,14 +14,14 @@ def wywolanie_planszy(plansza):
   7 | 8 | 9
 """
     for i in range(1, 10):
-        if (plansza[i] in ['O', 'X']):
+        if plansza[i] in ['O', 'X']:
             pusta_plansza = pusta_plansza.replace(str(i), plansza[i])
     print(pusta_plansza)
 
 
 def znak_gracza():
     i = True
-    while i == True:
+    while i.__eq__(True):
         gracz1 = input("Wybierz symbol X lub O dla gracza 1: ")
         if gracz1 in ['x', 'X']:
             gracz1 = gracz1.upper()
@@ -127,7 +127,7 @@ def pelna_plansza(plansza):
 def main():
     plansza1 = ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     j = 0
-    if czy_komputer() == False:
+    if czy_komputer().__eq__(False):
         gracze = znak_gracza()
         while pelna_plansza(plansza1) == False and wygrana(plansza1, gracze[0]) == False and wygrana(plansza1, gracze[
             1]) == False:
@@ -156,32 +156,12 @@ def main():
             clear()
 
         wywolanie_planszy(plansza1)
-        if pelna_plansza(plansza1) == True:
+        if pelna_plansza(plansza1).__eq__(True):
             print("Remis :D")
-        elif wygrana(plansza1, gracze[0]) == True:
+        elif wygrana(plansza1, gracze[0]).__eq__(True):
             print("Wygrana :D , GRATULACJE!!")
         else:
             print("Przegrana :( ")
     input("Zamknij")
-
-
-def test_nie_pelna_plansza():
-    # given
-    plansza = ["*", "*", "*", 8]
-    # when
-    result = pelna_plansza(plansza)
-    # then
-    assert result
-    assert pelna_plansza(["*", 1, 3, "*"])
-
-
-def test_pelna_plansza():
-    # given
-    plansza = ["*", 5, 6, 1]
-    # when
-    result = pelna_plansza(plansza)
-    # then
-    assert result == False
-
 
 main()
